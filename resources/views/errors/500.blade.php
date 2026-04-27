@@ -1,0 +1,8 @@
+<x-layout>
+    <div class="flex justify-center items-center h-screen">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold">500</h1>
+            <p class="text-lg">Terjadi kesalahan pada server</p>
+        </div>
+    </div>
+</x-layout>
