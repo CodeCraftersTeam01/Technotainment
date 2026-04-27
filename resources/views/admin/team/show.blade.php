@@ -77,7 +77,7 @@
                     </td>
                     <td class="px-6 py-4">
                         @if ($team->team_invoice)
-                            <span class="text-gray-400">Yes</span>
+                            <a href="{{ route('admin.documents.serve', ['path' => $team->team_invoice]) }}" target="_blank" class="text-blue-600 hover:underline">View Invoice</a>
                         @else
                             <span class="text-gray-400">No invoice</span>
                         @endif
@@ -110,7 +110,7 @@
                         <td class="px-6 py-4">{{ $member->member_team_name }}</td>
                         <td class="px-6 py-4">
                             @if ($member->member_team_identity)
-                                <span class="text-gray-400">Yes</span>
+                                <a href="{{ route('admin.documents.serve', ['path' => $member->member_team_identity]) }}" target="_blank" class="text-blue-600 hover:underline">View Identity</a>
                             @else
                                 <span class="text-gray-400">No document</span>
                             @endif

@@ -98,55 +98,7 @@
                         </div>
                     </a>
                 @endforeach
-                <a onclick="event.preventDefault(); document.getElementById('logout').submit()"
-                    class="block md:hidden hover:translate-x-2 duration-200 rounded-md">
-                    <div class="flex gap-2 items-center w-40">
-                        <div class="p-2 rounded-md">
-                            <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-log-out-icon lucide-log-out">
-                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                                <polyline points="16 17 21 12 16 7" />
-                                <line x1="21" x2="9" y1="12" y2="12" />
-                            </svg>
-                        </div>
-                        <p
-                            class="cursor-pointer text-black font-semibold md:opacity-0 group-hover:opacity-100 transition-all duration-200 md:-translate-x-full group-hover:translate-x-0 hover:translate-x-2">
-                            Logout
-                        </p>
-                    </div>
-                    <form action="{{ route('logout') }}" method="POST" id="logout">
-                        @csrf
-                        @method('delete')
-                    </form>
-                </a>
             </div>
-        </div>
-        <div class="flex flex-col justify-center">
-            <a onclick="event.preventDefault(); document.getElementById('logout').submit()"
-                class="hidden md:block hover:translate-x-2 duration-200 rounded-md">
-                <div class="flex gap-2 items-center w-40">
-                    <div class="p-2 rounded-md">
-                        <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-log-out-icon lucide-log-out">
-                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                            <polyline points="16 17 21 12 16 7" />
-                            <line x1="21" x2="9" y1="12" y2="12" />
-                        </svg>
-                    </div>
-                    <p
-                        class="cursor-pointer text-black font-semibold md:opacity-0 group-hover:opacity-100 transition-all duration-200 md:-translate-x-full group-hover:translate-x-0 hover:translate-x-2">
-                        Logout
-                    </p>
-                </div>
-                <form action="{{ route('logout') }}" method="POST" id="logout">
-                    @csrf
-                    @method('delete')
-                </form>
-            </a>
         </div>
     </aside>
 </div>

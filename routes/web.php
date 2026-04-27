@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminAchievementController;
 use App\Http\Controllers\Admin\AdminCompetitionController;
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AdminMediaPartnerController;
+use App\Http\Controllers\Admin\AdminDocumentController;
 
 // Auth
 Route::middleware(['guest', 'throttle:5,1'])->group(function () {
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('works', AdminWorkController::class);
     Route::resource('announcements', AdminAnnouncementController::class);
     Route::resource('work-deadlines', WorkDeadlineController::class);
+    Route::get('/admin/documents/{path}', [AdminDocumentController::class, 'serve'])->name('admin.documents.serve')->where('path', '.*');
     Route::delete('/logout', [AuthController::class, 'destroy'])->name('logout');
 });
 

@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (str_contains(config('app.url'), 'https://')) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+
         try {
             $event = Event::where('event_status', 'active')->first();
             View::share('eventTitle', $event ? $event->event_name . ' - ' . $event->event_year : 'Coming Soon');
