@@ -74,23 +74,13 @@
             }
         });
 
-        // Menampilkan nama file untuk anggota dan preview
+        // Menampilkan nama file untuk anggota
         document.querySelectorAll('.member-file').forEach(input => {
             input.addEventListener('change', function() {
                 const index = this.getAttribute('data-index');
                 const file = this.files[0];
                 if (file) {
                     document.getElementById(`member_file_${index}`).textContent = file.name;
-
-                    // Preview image
-                    const preview = document.getElementById(`member-preview-${index}`);
-                    preview.classList.remove('hidden');
-                    const img = preview.querySelector('img');
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        img.src = e.target.result;
-                    }
-                    reader.readAsDataURL(file);
                 }
             });
         });

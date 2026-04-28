@@ -69,10 +69,6 @@
                         </label>
                         <span id="member_file_0" class="ml-2 text-sm text-blue-tertiary truncate max-w-[150px]"></span>
                     </div>
-                    <div id="member-preview-0" class="mt-2 hidden">
-                        <img src="/placeholder.svg" alt="ID Preview"
-                            class="h-12 w-auto object-cover rounded-lg border border-blue-quinary">
-                    </div>
                     <p class="text-sm text-gray-500 italic">*jpeg,png,jpg mask 2MB</p>
                 </div>
             </div>
@@ -166,10 +162,6 @@
                                 </label>
                                 <span id="member_file_{{ $i }}"
                                     class="ml-2 text-sm text-blue-tertiary truncate max-w-[150px]"></span>
-                            </div>
-                            <div id="member-preview-{{ $i }}" class="mt-2 hidden">
-                                <img src="/placeholder.svg" alt="ID Preview"
-                                    class="h-12 w-auto object-cover rounded-lg border border-blue-quinary">
                             </div>
                             <p class="text-sm text-gray-500 italic">*jpeg,png,jpg mask 2MB</p>
                         </div>
