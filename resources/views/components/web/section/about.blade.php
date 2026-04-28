@@ -11,9 +11,9 @@
         </div>
     </div>
 
-    <div class="relative container mx-auto px-4">
+    <div class="relative container mx-auto px-4 reveal">
         <div class="grid md:grid-cols-2 gap-8 items-center">
-            <div class="relative order-2 md:order-1">
+            <div class="relative order-2 md:order-1 reveal">
                 <div class="absolute w-full h-full">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-tertiary/10 rounded-full animate-blob"></div>
                     <div
@@ -26,16 +26,16 @@
                 <div class="relative flex justify-center items-center">
                     <div
                         class="relative z-20 transform hover:scale-110 hover:-rotate-6 transition-all duration-300 -mr-8">
-                        <img src="{{ asset('images/maskot1.png') }}" alt="Maskot UKMFT-ITC" class="w-48 md:w-64">
+                        <img src="{{ asset('images/maskot1.png') }}" alt="Maskot UKMFT-ITC" class="w-48 md:w-64" loading="lazy">
                     </div>
                     <div
                         class="relative z-10 transform hover:scale-110 hover:rotate-6 transition-all duration-300 -ml-8">
-                        <img src="{{ asset('images/maskot2.png') }}" alt="Maskot UKMFT-ITC" class="w-48 md:w-64">
+                        <img src="{{ asset('images/maskot2.png') }}" alt="Maskot UKMFT-ITC" class="w-48 md:w-64" loading="lazy">
                     </div>
                 </div>
             </div>
 
-            <div class="order-1 md:order-2">
+            <div class="order-1 md:order-2 reveal">
                 <div class="text-center md:text-left relative">
                     <span
                         class="absolute top-0 left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 -translate-y-1/2 text-6xl md:text-8xl text-tertiary/5 select-none font-black animate-pulse">ABOUT</span>

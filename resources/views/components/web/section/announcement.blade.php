@@ -16,7 +16,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($announcement as $anc)
                     <div
-                        class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-quaternary/20">
+                        class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-quaternary/20 reveal">
                         <div
                             class="absolute inset-0 bg-gradient-to-br from-quaternary/10 to-tertiary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                         </div>
@@ -26,7 +26,7 @@
                                 @if ($anc->announcement_photo)
                                     <img src="{{ Storage::url($anc->announcement_photo) }}"
                                         alt="{{ $anc->announcement_title }}" onclick="openModal(this.src)"
-                                        class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110 cursor-pointer">
+                                        class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110 cursor-pointer" loading="lazy">
                                 @else
                                     <p class="text-quaternary w-full">No Image</p>
                                 @endif

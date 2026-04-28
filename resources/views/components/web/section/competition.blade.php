@@ -37,7 +37,7 @@
                 @forelse($esports as $esport)
                     <a href="/competition/{{ $esport->slug }}">
                         <div
-                            class="bg-white/[0.03] backdrop-blur-lg mb-8 rounded-3xl border border-white/[0.1] transition-all duration-400 hover:-translate-y-2.5 hover:shadow-[0_25px_50px_rgba(6,68,105,0.25)] hover:border-white/[0.2] relative overflow-hidden group">
+                            class="bg-white/[0.03] backdrop-blur-lg mb-8 rounded-3xl border border-white/[0.1] transition-all duration-400 hover:-translate-y-2.5 hover:shadow-[0_25px_50px_rgba(6,68,105,0.25)] hover:border-white/[0.2] relative overflow-hidden group reveal">
                             <div
                                 class="absolute inset-0 bg-gradient-to-br from-secondary/10 to-tertiary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
@@ -49,17 +49,17 @@
                                             <div
                                                 class="w-72 h-72 md:w-96 md:h-96 rounded-full border-4 border-gradient-to-r from-quaternary to-tertiary flex items-center justify-center overflow-hidden shadow-2xl">
                                                 <img src="{{ Storage::url($esport->competition_logo) }}" alt="PES Game"
-                                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                                             </div>
                                             <div
                                                 class="absolute -bottom-6 -left-6 w-44 h-44 rounded-full border-4 border-tertiary overflow-hidden shadow-lg">
                                                 <img src="{{ Storage::url($esport->competition_third_logo) }}"
-                                                    alt="Messi" class="w-full h-full object-cover">
+                                                    alt="Third Logo" class="w-full h-full object-cover" loading="lazy">
                                             </div>
                                             <div
                                                 class="absolute -top-6 -right-6 w-44 h-44 rounded-full border-4 border-tertiary overflow-hidden shadow-lg">
                                                 <img src="{{ Storage::url($esport->competition_second_logo) }}"
-                                                    alt="Ronaldo" class="w-full h-full object-cover">
+                                                    alt="Second Logo" class="w-full h-full object-cover" loading="lazy">
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +98,7 @@
                 @forelse ($nonesports as $nonesport)
                     <a href="/competition/{{ $nonesport->slug }}">
                         <div
-                            class="bg-white/[0.03] backdrop-blur-lg mb-8 rounded-3xl border border-white/[0.1] transition-all duration-400 hover:-translate-y-2.5 hover:shadow-[0_25px_50px_rgba(6,68,105,0.25)] hover:border-white/[0.2] relative overflow-hidden group">
+                            class="bg-white/[0.03] backdrop-blur-lg mb-8 rounded-3xl border border-white/[0.1] transition-all duration-400 hover:-translate-y-2.5 hover:shadow-[0_25px_50px_rgba(6,68,105,0.25)] hover:border-white/[0.2] relative overflow-hidden group reveal">
                             <div
                                 class="absolute inset-0 bg-gradient-to-br from-secondary/10 to-tertiary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
@@ -111,17 +111,17 @@
                                                 class="w-72 h-72 md:w-96 md:h-96 rounded-full border-4 border-gradient-to-r from-quaternary to-tertiary flex items-center justify-center overflow-hidden shadow-2xl">
                                                 <img src="{{ Storage::url($nonesport->competition_logo) }}"
                                                     alt="UI/UX Design"
-                                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                                             </div>
                                             <div
                                                 class="absolute -bottom-6 -left-6 w-44 h-44 rounded-full border-4 border-tertiary overflow-hidden shadow-lg">
                                                 <img src="{{ Storage::url($nonesport->competition_third_logo) }}"
-                                                    alt="Figma" class="w-full h-full object-cover">
+                                                    alt="Figma" class="w-full h-full object-cover" loading="lazy">
                                             </div>
                                             <div
                                                 class="absolute -top-6 -right-6 w-44 h-44 rounded-full border-4 border-tertiary overflow-hidden shadow-lg">
                                                 <img src="{{ Storage::url($nonesport->competition_second_logo) }}"
-                                                    alt="Design" class="w-full h-full object-cover">
+                                                    alt="Design" class="w-full h-full object-cover" loading="lazy">
                                             </div>
                                         </div>
                                     </div>

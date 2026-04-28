@@ -23,7 +23,7 @@
                                     <div
                                         class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-xl p-6 [backface-visibility:hidden]">
                                         <img src="{{ Storage::url($sponsor->sponsor_logo) }}" alt="{{ $sponsor->sponsor_name }}"
-                                            class="w-full h-full object-contain">
+                                            class="w-full h-full object-contain" loading="lazy">
                                     </div>
                                     <div
                                         class="absolute inset-0 bg-gradient-to-br from-tertiary/20 to-quaternary/20 backdrop-blur-xl rounded-xl p-6 [transform:rotateY(180deg)] [backface-visibility:hidden]">
@@ -55,10 +55,10 @@
                     <div class="group" title="{{ $mediaPartner->media_partner_name }}">
                         <div class="w-[150px] h-[150px] relative [perspective:1000px]">
                             <div
-                                class="w-full h-full relative [clip-path:polygon(50%_0%,100%_25%,100%_75%,50%_100%,0%_75%,0%_25%)] bg-white/5 backdrop-blur-md p-6 group-hover:bg-white/10 transition-all duration-300 hover:[transform:translateZ(20px)]">
+                                class="w-full h-full relative [clip-path:polygon(50%_0%,100%_25%,100%_75%,50%_100%,0%_75%,0%_25%)] bg-white/5 backdrop-blur-md p-6 group-hover:bg-white/10 transition-all duration-300 hover:[transform:translateZ(20px)] reveal">
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <img src="{{ Storage::url($mediaPartner->media_partner_logo) }}" alt="{{ $mediaPartner->media_partner_name }}"
-                                        class="h-20 w-auto mx-auto group-hover:scale-110 transition-all duration-300 aspect-square object-cover">
+                                        class="h-20 w-auto mx-auto group-hover:scale-110 transition-all duration-300 aspect-square object-cover" loading="lazy">
                                 </div>
                             </div>
                             <p class="text-quinary font-semibold mt-2 text-center">{{ $mediaPartner->media_partner_name }}</p>
