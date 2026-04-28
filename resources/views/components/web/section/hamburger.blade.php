@@ -12,7 +12,7 @@
 
     <!-- Mobile menu -->
     <div id="mobile-menu"
-        class="hidden md:hidden mobile-menu-closed fixed top-0 left-0 right-0 bg-gradient-to-b from-secondary/95 to-secondary/90 backdrop-blur-2xl shadow-2xl h-screen z-40">
+        class="hidden md:hidden mobile-menu-closed fixed top-0 left-0 right-0 bg-secondary/80 backdrop-blur-3xl border-b border-white/10 shadow-2xl h-screen z-40">
         <div class="container mx-auto px-6 py-16 flex flex-col h-full relative">
             <!-- Decorative elements -->
             <div class="absolute inset-0 overflow-hidden pointer-events-none">

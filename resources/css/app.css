@@ -105,9 +105,63 @@ html {
         transform: translate(0px, 0px) scale(1);
     }
 }
+/* Liquid Glass & Floating Effect */
+.navbar-glass {
+    background: transparent;
+    backdrop-filter: blur(0px);
+    border: 1px solid transparent;
+}
+
+.navbar-scrolled {
+    @apply mt-4 mx-auto max-w-[90%] rounded-full;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes spin-slow-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+.animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+}
+.animate-spin-slow-reverse {
+    animation: spin-slow-reverse 25s linear infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+.animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 15s ease infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
 
 /* Optimasi Performa Section */
 section {
-    content-visibility: auto; /* Browser hanya merender jika akan terlihat */
+    content-visibility: auto;
     contain-intrinsic-size: 1px 500px;
 }

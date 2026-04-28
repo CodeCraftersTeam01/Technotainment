@@ -1,24 +1,19 @@
-<div class="absolute inset-0 overflow-hidden">
-    <!-- Square -->
-    <div class="absolute animate-pulse opacity-20 top-20 left-20 w-72 h-72 bg-tertiary rounded-full filter blur-3xl">
-    </div>
-    <div
-        class="absolute animate-pulse opacity-20 bottom-20 right-20 w-72 h-72 bg-quaternary rounded-full filter blur-3xl">
-    </div>
-    <div class="absolute top-1/4 left-1/4 w-32 h-32 border-2 border-tertiary/20 rotate-45 animate-spin-slow"></div>
-    <div
-        class="absolute bottom-1/4 right-1/4 w-32 h-32 border-2 border-quaternary/20 rotate-12 animate-spin-slow-reverse">
-    </div>
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Animated Blobs -->
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-tertiary/10 rounded-full blur-[120px] animate-blob"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-quaternary/10 rounded-full blur-[120px] animate-blob animation-delay-2000"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30%] h-[30%] bg-tertiary/5 rounded-full blur-[100px] animate-blob animation-delay-4000"></div>
 
-    <!-- Circles -->
-    <div class="absolute animate-float top-1/5 left-1/3 w-16 h-16 bg-tertiary/10 rounded-full"></div>
-    <div class="absolute animate-float-delay right-1/4 top-1/3 w-24 h-24 bg-quaternary/10 rounded-full"></div>
+    <!-- Geometric Ornaments -->
+    <div class="absolute top-20 right-[15%] w-32 h-32 border border-white/10 rounded-3xl rotate-12 animate-spin-slow"></div>
+    <div class="absolute bottom-40 left-[10%] w-24 h-24 border border-white/10 rounded-full animate-float"></div>
+    <div class="absolute top-1/3 left-[5%] w-16 h-16 border border-tertiary/20 rounded-lg rotate-45 animate-spin-slow-reverse"></div>
+    
+    <!-- Floating Particles -->
+    <div class="absolute top-1/4 right-1/4 w-2 h-2 bg-tertiary rounded-full animate-ping"></div>
+    <div class="absolute bottom-1/3 left-1/4 w-1.5 h-1.5 bg-quaternary rounded-full animate-ping delay-1000"></div>
+    <div class="absolute top-2/3 right-1/3 w-1 h-1 bg-white/30 rounded-full animate-pulse"></div>
 
-    <!-- Gradient blobs -->
-    <div
-        class="absolute -left-20 -bottom-20 w-96 h-96 bg-gradient-to-r from-tertiary/20 to-transparent rounded-full filter blur-3xl animate-pulse-slow">
-    </div>
-    <div
-        class="absolute -right-20 -top-20 w-96 h-96 bg-gradient-to-l from-quaternary/20 to-transparent rounded-full filter blur-3xl animate-pulse-slow">
-    </div>
+    <!-- Lines / Grid Pattern (Optional) -->
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]"></div>
 </div>
