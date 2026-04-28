@@ -4,25 +4,25 @@
     <x-web.section.background />
     
     <!-- Hero Content -->
-    <div class="relative container mx-auto px-4 pt-32 pb-20 flex flex-col items-center justify-center min-h-screen text-center z-10">
+    <div class="relative container mx-auto px-4 pt-24 pb-16 flex flex-col items-center justify-center min-h-screen text-center z-10">
         <!-- Badge -->
-        <div class="reveal mb-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md inline-flex items-center gap-2">
-            <span class="relative flex h-2 w-2">
+        <div class="reveal mb-4 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md inline-flex items-center gap-2">
+            <span class="relative flex h-1.5 w-1.5">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-tertiary"></span>
             </span>
-            <span class="text-quinary text-sm font-medium tracking-wider uppercase">Official Event 2025</span>
+            <span class="text-quinary text-[10px] md:text-xs font-medium tracking-wider uppercase">Official Event 2025</span>
         </div>
 
-        <div class="mb-10 max-w-5xl">
-            <h2 class="reveal text-tertiary font-bold text-lg md:text-xl mb-4 tracking-[0.2em] uppercase italic">UKMFT-ITC Present</h2>
-            <h1 class="reveal text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white mb-6 tracking-tighter leading-none">
+        <div class="mb-8 max-w-4xl">
+            <h2 class="reveal text-tertiary font-bold text-sm md:text-base mb-3 tracking-[0.2em] uppercase italic">UKMFT-ITC Present</h2>
+            <h1 class="reveal text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-5 tracking-tighter leading-tight">
                 {{ $event ? $event->event_name : 'TECHNO' }} <br class="hidden md:block">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-tertiary via-quaternary to-tertiary animate-gradient-x italic">
                     {{ $event ? $event->event_year : '2025' }}
                 </span>
             </h1>
-            <p class="reveal text-quinary/80 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed">
+            <p class="reveal text-quinary/80 text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
                 {{ $event ? $event->event_theme : 'Innovating the Future Through Technology and Entertainment' }}
             </p>
         </div>

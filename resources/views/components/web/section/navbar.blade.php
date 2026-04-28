@@ -1,7 +1,7 @@
 <div id="main-navbar"
-    class="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-700 py-6">
+    class="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-700 py-4">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-14">
             <div class="flex items-center">
                 @if($event)
                     <div class="flex items-center group">
@@ -149,11 +149,11 @@
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('main-navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('navbar-scrolled', 'py-2');
-                navbar.classList.remove('py-6');
+                navbar.classList.add('navbar-scrolled', 'py-1');
+                navbar.classList.remove('py-4');
             } else {
-                navbar.classList.remove('navbar-scrolled', 'py-2');
-                navbar.classList.add('py-6');
+                navbar.classList.remove('navbar-scrolled', 'py-1');
+                navbar.classList.add('py-4');
             }
         });
     </script>
