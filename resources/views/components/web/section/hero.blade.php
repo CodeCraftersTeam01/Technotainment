@@ -1,6 +1,6 @@
 @props(['mediaPartners', 'event', 'sponsors'])
 
-<div id="home" class="relative min-h-screen bg-gradient-to-br from-[#064469] via-[#091b29] to-[#064469] overflow-hidden">
+<div id="home" class="relative min-h-screen bg-gradient-to-br from-[#191e2b] via-[#253045] to-[#191e2b] overflow-hidden">
     <x-web.section.background />
     
     <!-- Hero Content -->

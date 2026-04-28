@@ -105,19 +105,20 @@ html {
         transform: translate(0px, 0px) scale(1);
     }
 }
-/* Liquid Glass & Floating Effect */
+/* Liquid Glass Bounce & Floating Effect */
 .navbar-glass {
     background: transparent;
     backdrop-filter: blur(0px);
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0); /* Hilangkan outline putih saat transparan */
 }
 
 .navbar-scrolled {
-    @apply mt-4 mx-auto max-w-[90%] rounded-full;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+    @apply mt-6 mx-auto max-w-[90%] rounded-full;
+    background: rgba(25, 30, 43, 0.7); /* Menggunakan warna #191e2b dengan opacity */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 198, 230, 0.2); /* Border cyan tipis (#00c6e6) */
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6); /* Efek Liquid Bounce */
 }
 
 @keyframes spin-slow {
