@@ -107,14 +107,14 @@ html {
 }
 /* Liquid Glass Bounce & Floating Effect */
 .navbar-glass {
-    background: transparent;
-    backdrop-filter: blur(0px);
-    border: none; /* Hapus border */
+    background: #191e2b; /* Warna solid Deep Navy */
+    backdrop-filter: blur(10px);
+    border: none;
 }
 
 .navbar-scrolled {
-    @apply mt-6 mx-auto max-w-[90%] rounded-full;
-    background: rgba(25, 30, 43, 0.7);
+    @apply mt-4 mx-auto max-w-[90%] rounded-full;
+    background: rgba(25, 30, 43, 0.85); /* Tetap glass saat melayang */
     backdrop-filter: blur(20px);
     border: none; /* Hapus border */
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
