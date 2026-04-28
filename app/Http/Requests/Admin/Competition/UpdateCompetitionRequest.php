@@ -23,7 +23,7 @@ class UpdateCompetitionRequest extends FormRequest
     {
         return [
             'competition_type' => 'required|in:E-Sports,Non-E-Sports',
-            'slug' => 'nullable|alpha_num|in:Ia1Dh6sZdQ,dZ4AnskCXj,7lTI2n5EDK,I5njJtbe5J',
+            'slug' => 'required|alpha_dash|unique:competitions,slug,' . $this->route('competition')->competition_id . ',competition_id',
             'competition_name' => 'required|string|max:50',
             'competition_end_date' => 'required|date',
             'competition_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',

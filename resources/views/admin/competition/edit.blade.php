@@ -11,7 +11,7 @@
                 :default="$competition->competition_name" required />
 
             <!-- competition slug -->
-            <x-form.input label="Competition Slug" id="slug" name="slug" type="text" :default="$competition->slug" required disabled />
+            <x-form.input label="Competition Slug" id="slug" name="slug" type="text" :default="$competition->slug" required />
             <p class="text-sm mt-0 italic">*NB : (Untuk slug tanya litbang bang)</p>
 
             <!-- competition end date -->
@@ -161,6 +161,20 @@
     <script>
         // Preview image before upload
         document.addEventListener("DOMContentLoaded", function() {
+            const nameInput = document.getElementById('competition_name');
+            const slugInput = document.getElementById('slug');
+
+            if (nameInput && slugInput) {
+                nameInput.addEventListener('input', function() {
+                    // Only auto-update if slug was already derived from name or is being edited
+                    const slug = nameInput.value.toLowerCase()
+                        .replace(/[^\w\s-]/g, '')
+                        .replace(/[\s_]+/g, '-')
+                        .replace(/^-+|-+$/g, '');
+                    slugInput.value = slug;
+                });
+            }
+
             const editorCompetitionInformation = createEditor('#editor_competition_information');
 
             const competitionInformationField = document.querySelector('#competition_information');

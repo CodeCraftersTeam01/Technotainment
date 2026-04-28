@@ -23,7 +23,7 @@ class StoreCompetitionRequest extends FormRequest
     {
         return [
             'competition_type' => 'required|in:E-Sports,Non-E-Sports',
-            'slug' => 'required|alpha_num|unique:competitions,slug|in:Ia1Dh6sZdQ,dZ4AnskCXj,7lTI2n5EDK,I5njJtbe5J',
+            'slug' => 'required|alpha_dash|unique:competitions,slug',
             'competition_name' => 'required|string|max:255',
             'competition_end_date' => 'required|date',
             'competition_logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',

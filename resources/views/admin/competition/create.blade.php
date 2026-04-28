@@ -182,6 +182,19 @@
         });
 
         document.addEventListener("DOMContentLoaded", function() {
+            const nameInput = document.getElementById('competition_name');
+            const slugInput = document.getElementById('slug');
+
+            if (nameInput && slugInput) {
+                nameInput.addEventListener('input', function() {
+                    const slug = nameInput.value.toLowerCase()
+                        .replace(/[^\w\s-]/g, '') // Remove non-word chars (except space and hyphen)
+                        .replace(/[\s_]+/g, '-')  // Replace spaces and underscores with hyphens
+                        .replace(/^-+|-+$/g, ''); // Trim hyphens
+                    slugInput.value = slug;
+                });
+            }
+
             const editorCompetitionInformation = createEditor('#editor_competition_information');
 
             editorCompetitionInformation.getEditorElements().mdEditor.blur(); 
