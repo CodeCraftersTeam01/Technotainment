@@ -124,23 +124,26 @@ class GuestController extends Controller
             'competition' => new CompetitionResource($competition),
             'event' => $event,
         ];
-        if ($competition->slug == 'Ia1Dh6sZdQ') {
+        $type = $competition->competition_view_template;
+
+        if ($type == 'mobilelegend') {
             return view('guest.mobilelegend', $data);
-        } elseif ($competition->slug == 'dZ4AnskCXj') {
+        } elseif ($type == 'pes') {
             return view('guest.pes', $data);
-        } elseif ($competition->slug == '7lTI2n5EDK') {
+        } elseif ($type == 'uiux') {
             return view('guest.uiux', $data);
-        } elseif ($competition->slug == 'I5njJtbe5J') {
+        } elseif ($type == 'webdesign') {
             return view('guest.webdesign', $data);
         } else {
             abort('404');
         }
     }
 
+
     /**
      * Store Registration Competition for Guest
-     * @param \App\Http\Requests\StoreRegistrationRequest $request
-     * @return void
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
 
     public function registrationStore(Request $request)
@@ -149,6 +152,8 @@ class GuestController extends Controller
             DB::beginTransaction();
 
             $slug = $request->input('slug');
+            $competition = Competition::where('slug', $slug)->firstOrFail();
+            $type = $competition->competition_view_template;
 
             // Validasi dasar yang selalu diperlukan
             $baseRules = [
@@ -162,33 +167,34 @@ class GuestController extends Controller
                 'team_invoice' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             ];
 
-            if ($slug == 'dZ4AnskCXj') {
+
+            if ($type == 'pes') {
                 unset($baseRules['team_logo']);
             }
 
             // Konfigurasi aturan member berdasarkan slug
             $slugMemberRules = [
-                'Ia1Dh6sZdQ' => 6, // Mobile Legends
-                'dZ4AnskCXj' => 1, // PES
-                '7lTI2n5EDK' => 3, // UI/UX
-                'I5njJtbe5J' => 3, // Web Designer
+                'mobilelegend' => 6, // Mobile Legends
+                'pes' => 1, // PES
+                'uiux' => 3, // UI/UX
+                'webdesign' => 3, // Web Designer
             ];
 
             // jika ui/ux hapus team_invoice dan tambahkan work_abstract
-            if ($request['slug'] == '7lTI2n5EDK') {
+            if ($type == 'uiux') {
                 unset($baseRules['team_invoice']);
                 $baseRules['work_abstract'] = 'required|file|mimes:pdf|max:5000';
             }
 
-            if (!array_key_exists($slug, $slugMemberRules)) {
+            if (!array_key_exists($type, $slugMemberRules)) {
                 return back()->with('error', 'Kompetisi tidak dikenali.')->withInput();
             }
 
-            $memberCount = $slugMemberRules[$slug];
+            $memberCount = $slugMemberRules[$type];
             $baseRules['members'] = "required|array|size:$memberCount";
 
             for ($i = 0; $i < $memberCount; $i++) {
-                $required = ($slug === 'Ia1Dh6sZdQ' && $i === 5 || $slug == '7lTI2n5EDK' && $i == 2 || $slug == 'I5njJtbe5J') ? 'nullable' : 'required';
+                $required = ($type === 'mobilelegend' && $i === 5 || $type == 'uiux' && $i == 2 || $type == 'webdesign') ? 'nullable' : 'required';
                 $baseRules["members.$i.name"] = "$required|max:255";
                 $baseRules["members.$i.identity"] = "$required|image|mimes:jpeg,png,jpg|max:2048";
             }
@@ -203,8 +209,8 @@ class GuestController extends Controller
             foreach ($members as $index => $member) {
                 $role = match (true) {
                     $index === 0 => 'Leader',
-                    $index === 2 && $slug == 'I5njJtbe5J' => 'Backup',
-                    $index === 2 && $slug == '7lTI2n5EDK' => 'Backup',
+                    $index === 2 && $type == 'webdesign' => 'Backup',
+                    $index === 2 && $type == 'uiux' => 'Backup',
                     $index >= 1 && $index <= 4 => 'Member',
                     $index === 5 => 'Backup',
                     default => null,
@@ -227,7 +233,6 @@ class GuestController extends Controller
             }
 
             // Simpan data
-            $competition = Competition::where('slug', $validated['slug'])->firstOrFail();
             $validated['competition_id'] = $competition->competition_id;
             unset($validated['members']);
 
@@ -237,7 +242,7 @@ class GuestController extends Controller
                 $validated['team_logo'] = $logo_path;
             }
 
-            if (!empty($validated['team_invoice']) && $request['slug'] != '7lTI2n5EDK') {
+            if (!empty($validated['team_invoice']) && $type != 'uiux') {
                 $invoice_path = Storage::disk('local')->put(Str::slug($request->team_name) . '/team-invoice', $request->file('team_invoice'));
                 $validated['team_invoice'] = $invoice_path;
             }
@@ -267,7 +272,7 @@ class GuestController extends Controller
             }
 
             // kalo web designer tambahkan work dengan token
-            if ($request['slug'] == 'I5njJtbe5J') { // Web Designer
+            if ($type == 'webdesign') { // Web Designer
                 Work::create([
                     'team_id' => $team->team_id,
                 ]); // buat work kosong
@@ -284,6 +289,12 @@ class GuestController extends Controller
         }
     }
 
+    /**
+     * Store Work for Team
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Team $team
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function workStore(Request $request, Team $team)
     {
         $team_token = $request->team_token;
@@ -307,8 +318,10 @@ class GuestController extends Controller
         $errorText = [];
         $teamError = [];
 
+        $type = $competition->competition_view_template;
+
         // UI/UX
-        if ($competition->slug == '7lTI2n5EDK') {
+        if ($type == 'uiux') {
             if(isset($request->work) && isset($request->work_proposal) && isset($request->work_original)) {
                 $baseRules = [
                     'work' => 'required|string|url|regex:/^https:\/\/(www\.)?figma\.com\/.+$/',
@@ -344,7 +357,7 @@ class GuestController extends Controller
             }
 
         // Web Design
-        } elseif ($competition->slug == 'I5njJtbe5J') {
+        } elseif ($type == 'webdesign') {
             if(isset($request->work) && isset($request->work_link)) {
                 $baseRules = [
                     'work' => 'required|file|mimes:zip,rar,7z',
@@ -365,7 +378,7 @@ class GuestController extends Controller
             }
         }
 
-        if($competition->slug == '7lTI2n5EDK') {
+        if($type == 'uiux') {
             if ($request->has('work') && $request->hasFile('work_proposal') && $request->hasFile('team_invoice') && $request->hasFile('work_original')) {
                 $validated = Validator::make($request->all(), $baseRules, $errorText)->validate();
                 $validated['work'] = $request->work;
@@ -386,7 +399,7 @@ class GuestController extends Controller
             } else {
                 return redirect()->route('team.dashboard')->with('error', 'Dokumen gagal disubmit! Periksa kembali dokumen yang anda submit.');
             }
-        }elseif($competition->slug == 'I5njJtbe5J') {
+        }elseif($type == 'webdesign') {
             if ($request->hasFile('work') && $request->has('work_link') && $request->hasFile('work_original')) {
                 $validated = Validator::make($request->all(), $baseRules, $errorText)->validate();
                 $workPath = $request->file('work')->store('works/' . Str::slug($team->team_name) . '/work-zip', 'public');

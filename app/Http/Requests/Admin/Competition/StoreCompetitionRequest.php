@@ -35,6 +35,7 @@ class StoreCompetitionRequest extends FormRequest
             'competition_guide_book' => 'required|file|mimes:pdf|max:5000',
             'competition_status' => 'required|in:active,nonactive',
             'competition_fee' => 'required|numeric|gt:0',
+            'competition_view_template' => 'required|in:mobilelegend,pes,uiux,webdesign',
             'event_id' => 'required|exists:events,event_id',
         ];
     }

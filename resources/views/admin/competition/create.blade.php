@@ -98,6 +98,14 @@
                 </option>
             </x-form.select>
 
+            <!-- competition view template -->
+            <x-form.select label="Competition View Template" id="competition_view_template" name="competition_view_template">
+                <option value="mobilelegend" {{ old('competition_view_template') == 'mobilelegend' ? 'selected' : '' }}>Mobile Legend (6 Members)</option>
+                <option value="pes" {{ old('competition_view_template') == 'pes' ? 'selected' : '' }}>PES/E-Football (1 Member)</option>
+                <option value="uiux" {{ old('competition_view_template') == 'uiux' ? 'selected' : '' }}>UI/UX (3 Members + Abstract)</option>
+                <option value="webdesign" {{ old('competition_view_template') == 'webdesign' ? 'selected' : '' }}>Web Design (3 Members)</option>
+            </x-form.select>
+
             <!-- event id -->
             <x-form.select label="Event Name" id="event_id" name="event_id">
                 @foreach ($events as $event)

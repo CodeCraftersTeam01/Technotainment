@@ -19,6 +19,17 @@ export default {
         "hover:bg-green-100",
         "hover:bg-purple-100",
         "hover:bg-yellow-100",
+        // Status colors
+        "bg-green-50",
+        "bg-red-50",
+        "text-green-600",
+        "text-red-600",
+        "bg-green-600",
+        "bg-red-600",
+        // Custom colors pattern
+        {
+            pattern: /(bg|text|from|to|via)-(primary|secondary|tertiary|quaternary|quinary|purple-primary|purple-secondary|blue-primary|blue-secondary|blue-tertiary|blue-quaternary|blue-quinary)(\/[0-9]+)?/,
+        },
     ],
     theme: {
         extend: {

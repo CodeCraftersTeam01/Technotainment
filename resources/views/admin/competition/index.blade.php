@@ -83,6 +83,7 @@
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900">COMPETITION NAME</th>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900">COMPETITION TYPE</th>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900">COMPETITION GUIDE BOOK</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">VIEW TEMPLATE</th>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900">COMPETITION STATUS</th>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900">ACTIONS</th>
                 </tr>
@@ -116,6 +117,11 @@
                             @else
                                 <span class="text-gray-400">No document</span>
                             @endif
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-2 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-semibold">
+                                {{ ucfirst($competition->competition_view_template) }}
+                            </span>
                         </td>
                         <td class="px-6 py-4">
                             <span

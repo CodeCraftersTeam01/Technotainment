@@ -46,7 +46,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/', [GuestController::class, 'index']);
     Route::get('/competition/{competition:slug}', [GuestController::class, 'competition']);
     Route::get('/registration/{competition:slug}', [GuestController::class, 'registration'])->middleware('throttle:60,1');
-    Route::post('/registration{competition:slug}', [GuestController::class, 'registrationStore'])->middleware('throttle:60,1')->name('registration.store');
+    Route::post('/registration/{competition:slug}', [GuestController::class, 'registrationStore'])->middleware('throttle:60,1')->name('registration.store');
     Route::get('/success-registration', [GuestController::class, 'successRegistration'])->name('success.registration');
     Route::patch('/work/{team}', [GuestController::class, 'workStore'])->name('work.store');
     Route::get('/login', [GuestController::class, 'login'])->name('team.login');

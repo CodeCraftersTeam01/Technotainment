@@ -29,6 +29,7 @@ class Competition extends Model
         'competition_guide_book',
         'competition_status',
         'competition_fee',
+        'competition_view_template',
         'event_id',
     ];
 

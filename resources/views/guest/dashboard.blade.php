@@ -21,7 +21,7 @@
                 <div class="bg-blue-secondary/30 rounded-xl p-6 shadow-lg space-y-4 relative">
                     <div class="flex items-center gap-4">
                         @if ($team->team_logo != null)
-                            <img src="{{ asset('storage/' . $team->team_logo) }}" alt="Team Logo"
+                            <img src="{{ asset($team->team_logo) }}" alt="Team Logo"
                                 class="w-20 h-20 rounded-full object-cover border-4 border-white/20 shadow-md">
                         @endif
                         <div>
