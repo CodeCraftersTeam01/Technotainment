@@ -109,16 +109,16 @@ html {
 .navbar-glass {
     background: transparent;
     backdrop-filter: blur(0px);
-    border: 1px solid rgba(255, 255, 255, 0); /* Hilangkan outline putih saat transparan */
+    border: none; /* Hapus border */
 }
 
 .navbar-scrolled {
     @apply mt-6 mx-auto max-w-[90%] rounded-full;
-    background: rgba(25, 30, 43, 0.7); /* Menggunakan warna #191e2b dengan opacity */
+    background: rgba(25, 30, 43, 0.7);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 198, 230, 0.2); /* Border cyan tipis (#00c6e6) */
+    border: none; /* Hapus border */
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-    transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6); /* Efek Liquid Bounce */
+    transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 @keyframes spin-slow {
