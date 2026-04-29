@@ -37,7 +37,25 @@
                 <x-web.registration.header :competition="$competition" />
 
                 <!-- Error Messages Container -->
-                <div class="w-full px-4 sm:px-8 pt-6" id="error-container"></div>
+                <div class="w-full px-4 sm:px-8 pt-6" id="error-container">
+                    @if ($errors->any())
+                        <div class="p-6 mb-8 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 animate-reveal">
+                            <div class="flex gap-4">
+                                <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                                <div>
+                                    <p class="font-black uppercase tracking-widest text-xs mb-2">Attention Required</p>
+                                    <ul class="text-sm font-medium space-y-1 list-disc pl-4">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
 
                 <!-- Form -->
                 <form id="registration-form" action="{{ route('registration.store', $competition->slug) }}"
@@ -220,7 +238,9 @@
                 // Clear errors and move
                 document.querySelector('#error-container').innerHTML = '';
                 step1.classList.add('hidden');
+                step1.classList.remove('active');
                 step2.classList.remove('hidden');
+                setTimeout(() => step2.classList.add('active'), 10);
                 progressBar.style.width = '100%';
                 progressText.textContent = 'Informasi Anggota';
                 currentStepText.textContent = '2';
@@ -231,7 +251,9 @@
         if (prevBtn) {
             prevBtn.addEventListener('click', function() {
                 step2.classList.add('hidden');
+                step2.classList.remove('active');
                 step1.classList.remove('hidden');
+                setTimeout(() => step1.classList.add('active'), 10);
                 progressBar.style.width = '50%';
                 progressText.textContent = 'Informasi Tim';
                 currentStepText.textContent = '1';

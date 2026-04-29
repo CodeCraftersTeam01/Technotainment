@@ -2,7 +2,7 @@
     'header' => null,
 ])
 
-<x-layout>
+<x-layout theme="bg-white admin-theme">
     @include('sweetalert::alert')
     <section class="flex bg-white min-h-screen">
         <x-admin.sidebar />

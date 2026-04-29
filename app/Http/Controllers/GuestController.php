@@ -148,59 +148,58 @@ class GuestController extends Controller
 
     public function registrationStore(Request $request)
     {
+        $slug = $request->input('slug');
+        $competition = Competition::where('slug', $slug)->firstOrFail();
+        $type = $competition->competition_view_template;
+
+        // Validasi dasar yang selalu diperlukan
+        $baseRules = [
+            'team_name' => 'required|string',
+            'team_logo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'team_email' => 'required|string|email',
+            'team_contact' => 'required|string',
+            'team_instance' => 'in:YES,NO',
+            'team_instance_name' => 'nullable|string',
+            'slug' => 'required|exists:competitions,slug',
+            'team_invoice' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+        ];
+
+        if ($type == 'pes') {
+            unset($baseRules['team_logo']);
+        }
+
+        // Konfigurasi aturan member berdasarkan slug
+        $slugMemberRules = [
+            'mobilelegend' => 6, // Mobile Legends
+            'pes' => 1, // PES
+            'uiux' => 3, // UI/UX
+            'webdesign' => 3, // Web Designer
+        ];
+
+        // jika ui/ux hapus team_invoice dan tambahkan work_abstract
+        if ($type == 'uiux') {
+            unset($baseRules['team_invoice']);
+            $baseRules['work_abstract'] = 'required|file|mimes:pdf|max:5000';
+        }
+
+        if (!array_key_exists($type, $slugMemberRules)) {
+            return back()->with('error', 'Kompetisi tidak dikenali.')->withInput();
+        }
+
+        $memberCount = $slugMemberRules[$type];
+        $baseRules['members'] = "required|array|max:$memberCount";
+
+        for ($i = 0; $i < $memberCount; $i++) {
+            $required = ($type === 'mobilelegend' && $i === 5 || $type == 'uiux' && $i == 2 || $type == 'webdesign' && $i == 2) ? 'nullable' : 'required';
+            $baseRules["members.$i.name"] = "$required|max:255";
+            $baseRules["members.$i.identity"] = "$required|image|mimes:jpeg,png,jpg,webp|max:2048";
+        }
+
+        // Jalankan validasi
+        $validated = Validator::make($request->all(), $baseRules)->validate();
+
         try {
             DB::beginTransaction();
-
-            $slug = $request->input('slug');
-            $competition = Competition::where('slug', $slug)->firstOrFail();
-            $type = $competition->competition_view_template;
-
-            // Validasi dasar yang selalu diperlukan
-            $baseRules = [
-                'team_name' => 'required|string',
-                'team_logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-                'team_email' => 'required|string|email',
-                'team_contact' => 'required|string',
-                'team_instance' => 'in:YES,NO',
-                'team_instance_name' => 'nullable|string',
-                'slug' => 'required|exists:competitions,slug',
-                'team_invoice' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            ];
-
-
-            if ($type == 'pes') {
-                unset($baseRules['team_logo']);
-            }
-
-            // Konfigurasi aturan member berdasarkan slug
-            $slugMemberRules = [
-                'mobilelegend' => 6, // Mobile Legends
-                'pes' => 1, // PES
-                'uiux' => 3, // UI/UX
-                'webdesign' => 3, // Web Designer
-            ];
-
-            // jika ui/ux hapus team_invoice dan tambahkan work_abstract
-            if ($type == 'uiux') {
-                unset($baseRules['team_invoice']);
-                $baseRules['work_abstract'] = 'required|file|mimes:pdf|max:5000';
-            }
-
-            if (!array_key_exists($type, $slugMemberRules)) {
-                return back()->with('error', 'Kompetisi tidak dikenali.')->withInput();
-            }
-
-            $memberCount = $slugMemberRules[$type];
-            $baseRules['members'] = "required|array|size:$memberCount";
-
-            for ($i = 0; $i < $memberCount; $i++) {
-                $required = ($type === 'mobilelegend' && $i === 5 || $type == 'uiux' && $i == 2 || $type == 'webdesign') ? 'nullable' : 'required';
-                $baseRules["members.$i.name"] = "$required|max:255";
-                $baseRules["members.$i.identity"] = "$required|image|mimes:jpeg,png,jpg|max:2048";
-            }
-
-            // Jalankan validasi
-            $validated = Validator::make($request->all(), $baseRules)->validate();
 
             // Buat struktur anggota
             $members = $validated['members'];

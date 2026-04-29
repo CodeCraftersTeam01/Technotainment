@@ -11,16 +11,27 @@ html {
 }
 
 /* Global dark theme defaults — override browser/Tailwind base */
-body {
+body.guest-theme {
     color: #fff;
 }
 
-label {
-    color: inherit;
+body.guest-theme label {
+    color: rgba(255, 255, 255, 0.6);
 }
 
-input, select, textarea {
-    color: #fff;
+/* Registration form specific — force labels white in dark glass card */
+#step-1 label,
+#step-2 label,
+.step-content label,
+.glass-card label {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Inputs inside glass cards */
+.glass-card input,
+.glass-card select,
+.glass-card textarea {
+    color: #fff !important;
 }
 
 

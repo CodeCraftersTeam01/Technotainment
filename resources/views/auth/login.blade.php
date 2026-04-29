@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout theme="bg-[#f0f0ff] admin-theme">
     <section class="bg-[#f0f0ff] flex justify-center items-center min-h-screen p-4 font-sans">
         <div class="relative bg-white rounded-3xl shadow-lg overflow-hidden w-full max-w-5xl flex flex-col md:flex-row">
             <!-- blue circle in top left -->
