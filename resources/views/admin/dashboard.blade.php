@@ -143,7 +143,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-sm font-bold text-gray-800">New event created: <span class="text-blue-600">Technotaiment 2025</span></p>
+                        <p class="text-sm font-bold text-gray-800">New event created: <span class="text-blue-600">Technotaiment {{ date('Y') }}</span></p>
                         <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">2 hours ago</p>
                     </div>
                 </div>

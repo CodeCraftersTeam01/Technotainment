@@ -10,6 +10,20 @@ html {
     background-color: #000;
 }
 
+/* Global dark theme defaults — override browser/Tailwind base */
+body {
+    color: #fff;
+}
+
+label {
+    color: inherit;
+}
+
+input, select, textarea {
+    color: #fff;
+}
+
+
 
 
 
@@ -119,6 +133,8 @@ body.page-exit {
     transform: translateY(24px);
     transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
                 transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 .reveal.active {

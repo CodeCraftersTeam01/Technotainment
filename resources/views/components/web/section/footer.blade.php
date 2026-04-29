@@ -11,7 +11,7 @@
                     @endif
                 </div>
                 <span
-                    class="self-center text-xl md:text-2xl font-bold text-white tracking-wide">{{ $event ? $event->event_name . ' ' . $event->event_year : 'No Event' }}</span>
+                    class="self-center text-xl md:text-2xl font-bold text-white tracking-wide">{{ $event ? $event->event_name . ' ' . date('Y') : 'No Event' }}</span>
             </div>
             <div class="lg:max-w-72">
                 <p class="text-white mt-4 pr-4 lg:max-w-72">
@@ -101,7 +101,7 @@
         </div>
     </div>
     <div class="py-6 md:py-8 text-sm text-center text-gray-400 border-t border-gray-800">
-        <p class="px-4">© {{ $event ? Str::upper($event->event_name) . ' ' . $event->event_year . ' | ' : '' }}UKMFT -
+        <p class="px-4">© {{ $event ? Str::upper($event->event_name) . ' ' . date('Y') . ' | ' : '' }}UKMFT -
             Information Technology Center UTM</p>
     </div>
 </footer>

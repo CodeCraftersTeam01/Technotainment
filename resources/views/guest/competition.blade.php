@@ -4,10 +4,7 @@
     <div class="relative bg-black min-h-screen overflow-hidden">
 
         {{-- Ambient background --}}
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00c6e6]/8 rounded-full blur-[140px] pointer-events-none"></div>
-        {{-- Square Grid --}}
-        <div class="absolute inset-0 pointer-events-none"
-             style="background-image: linear-gradient(rgba(128,128,128,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(128,128,128,0.1) 1px, transparent 1px); background-size: 64px 64px;"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00c6e6]/8 rounded-full blur-[100px] pointer-events-none" style="will-change: filter;"></div>
         <div class="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none z-10"></div>
 
         {{-- HERO --}}
@@ -98,7 +95,7 @@
                     <div class="inline-flex p-1 rounded-full" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07);">
                         @foreach(['overview' => 'Overview', 'guidebook' => 'Guidebook', 'timeline' => 'Timeline', 'prizes' => 'Prizes'] as $key => $label)
                             <button onclick="switchDetailTab('{{ $key }}')" id="{{ $key }}Tab"
-                                class="detail-tab-pill {{ $key === 'overview' ? 'detail-tab-active' : '' }} px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300">
+                                class="detail-tab-pill {{ $key === 'overview' ? 'detail-tab-active' : '' }} px-3 md:px-6 py-1.5 md:py-2.5 rounded-full text-[10px] md:text-sm font-bold transition-all duration-300">
                                 {{ $label }}
                             </button>
                         @endforeach

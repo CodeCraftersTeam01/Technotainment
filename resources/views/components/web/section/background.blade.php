@@ -1,9 +1,9 @@
 {{-- Minimal decorative background for section usage --}}
 <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
     {{-- Ambient blobs --}}
-    <div class="absolute top-[-10%] left-[-5%] w-[45%] h-[45%] bg-[#00c6e6]/6 rounded-full blur-[130px] animate-blob"></div>
-    <div class="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#bfc0d1]/4 rounded-full blur-[110px] animate-blob animation-delay-2000"></div>
-    <div class="absolute top-[40%] left-[50%] w-[25%] h-[25%] bg-[#00c6e6]/3 rounded-full blur-[80px] animate-blob animation-delay-4000"></div>
+    <div class="absolute top-[-10%] left-[-5%] w-[45%] h-[45%] bg-[#00c6e6]/6 rounded-full blur-[90px] animate-blob" style="will-change: transform, filter;"></div>
+    <div class="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#bfc0d1]/4 rounded-full blur-[80px] animate-blob animation-delay-2000" style="will-change: transform, filter;"></div>
+    <div class="absolute top-[40%] left-[50%] w-[25%] h-[25%] bg-[#00c6e6]/3 rounded-full blur-[60px] animate-blob animation-delay-4000" style="will-change: transform, filter;"></div>
 
     {{-- Subtle rotating shapes --}}
     <div class="absolute top-16 right-[12%] w-24 h-24 border border-white/[0.04] rounded-2xl rotate-12 animate-spin-slow"></div>
