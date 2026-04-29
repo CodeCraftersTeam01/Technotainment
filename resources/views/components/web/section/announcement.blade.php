@@ -1,15 +1,10 @@
 @props(['announcement'])
-<div id="announcement" class="relative pb-24 pt-8 md:pt-12 lg:pt-24 bg-gradient-to-br from-primary to-secondary">
+<div id="announcement" class="relative pb-24 pt-16 bg-black">
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16 relative pt-12">
-            <span
-                class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 text-[40px] sm:text-[60px] md:text-[p65x] lg:text-[100px] xl:text-[120px] text-transparent bg-clip-text bg-gradient-to-r from-secondary via-tertiary to-quaternary font-black italic transform -rotate-3 select-none tracking-wider">ANNOUNCEMENTS</span>
-            <h2
-                class="relative font-extrabold text-quaternary/85 -translate-y-8 sm:-translate-y-2 md:-translate-y-0 lg:translate-y-4 text-2xl sm:text-3xl md:text-5xl lg:text-6xl mb-6 tracking-tighter drop-shadow-lg">
-                Latest Updates</h2>
-            <div
-                class="w-40 h-2 bg-gradient-to-r from-secondary via-tertiary to-quaternary mx-auto rounded-full animate-pulse shadow-glow">
-            </div>
+        <div class="text-center mb-16 relative pt-4 reveal">
+            <p class="text-label text-[#00c6e6]/60 mb-3">Stay Updated</p>
+            <h2 class="text-headline text-white mb-4">Latest Updates</h2>
+            <div class="w-16 h-px bg-gradient-to-r from-transparent via-[#00c6e6] to-transparent mx-auto"></div>
         </div>
 
         @if ($announcement->count() > 0)

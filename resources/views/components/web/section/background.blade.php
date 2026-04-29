@@ -1,19 +1,17 @@
-<div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <!-- Animated Blobs -->
-    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-tertiary/10 rounded-full blur-[120px] animate-blob"></div>
-    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-quaternary/10 rounded-full blur-[120px] animate-blob animation-delay-2000"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30%] h-[30%] bg-tertiary/5 rounded-full blur-[100px] animate-blob animation-delay-4000"></div>
+{{-- Minimal decorative background for section usage --}}
+<div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    {{-- Ambient blobs --}}
+    <div class="absolute top-[-10%] left-[-5%] w-[45%] h-[45%] bg-[#00c6e6]/6 rounded-full blur-[130px] animate-blob"></div>
+    <div class="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-[#bfc0d1]/4 rounded-full blur-[110px] animate-blob animation-delay-2000"></div>
+    <div class="absolute top-[40%] left-[50%] w-[25%] h-[25%] bg-[#00c6e6]/3 rounded-full blur-[80px] animate-blob animation-delay-4000"></div>
 
-    <!-- Geometric Ornaments -->
-    <div class="absolute top-20 right-[15%] w-32 h-32 border border-white/10 rounded-3xl rotate-12 animate-spin-slow"></div>
-    <div class="absolute bottom-40 left-[10%] w-24 h-24 border border-white/10 rounded-full animate-float"></div>
-    <div class="absolute top-1/3 left-[5%] w-16 h-16 border border-tertiary/20 rounded-lg rotate-45 animate-spin-slow-reverse"></div>
-    
-    <!-- Floating Particles -->
-    <div class="absolute top-1/4 right-1/4 w-2 h-2 bg-tertiary rounded-full animate-ping"></div>
-    <div class="absolute bottom-1/3 left-1/4 w-1.5 h-1.5 bg-quaternary rounded-full animate-ping delay-1000"></div>
-    <div class="absolute top-2/3 right-1/3 w-1 h-1 bg-white/30 rounded-full animate-pulse"></div>
+    {{-- Subtle rotating shapes --}}
+    <div class="absolute top-16 right-[12%] w-24 h-24 border border-white/[0.04] rounded-2xl rotate-12 animate-spin-slow"></div>
+    <div class="absolute bottom-24 left-[8%] w-16 h-16 border border-[#00c6e6]/10 rounded-full animate-float"></div>
+    <div class="absolute top-[35%] left-[4%] w-10 h-10 border border-white/[0.04] rounded-lg rotate-45 animate-spin-slow-reverse"></div>
 
-    <!-- Lines / Grid Pattern (Optional) -->
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]"></div>
+    {{-- Particle dots --}}
+    <div class="absolute top-[22%] right-[22%] w-1 h-1 bg-[#00c6e6]/50 rounded-full animate-ping animation-delay-200"></div>
+    <div class="absolute bottom-[30%] left-[18%] w-1 h-1 bg-white/20 rounded-full animate-ping animation-delay-2000"></div>
+    <div class="absolute top-[60%] right-[35%] w-0.5 h-0.5 bg-[#00c6e6]/30 rounded-full animate-pulse"></div>
 </div>

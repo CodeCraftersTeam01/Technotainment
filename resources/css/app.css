@@ -2,166 +2,354 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================================
+   BASE — Apple-style Futuristic Foundation
+   ========================================= */
 html {
     scroll-behavior: smooth;
+    background-color: #000;
 }
 
-.shiki .highlight {
-    @apply bg-gray-600 py-1;
+
+
+
+
+/* =========================================
+   PAGE TRANSITION (Framer Motion style)
+   ========================================= */
+body {
+    animation: page-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.shiki .add {
-    @apply bg-green-600/50 dark:bg-green-600/50 py-1 rounded-sm;
+body.page-exit {
+    animation: page-exit 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.shiki .del {
-    @apply bg-red-300/50 dark:bg-red-600/50 py-1 rounded-sm;
-}
-
-.shiki.focus .line:not(.focus) {
-    @apply transition-all blur-[2px];
-}
-
-.shiki.focus:hover .line {
-    @apply transition-all blur-0;
-}
-
-.markdown-content h1 {
-    @apply text-2xl font-bold;
-}
-
-.markdown-content p {
-    @apply text-base leading-relaxed;
-}
-
-/* Hamburger Menu */
-.mobile-menu-open {
-    opacity: 1;
-    transform: translateX(0);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.mobile-menu-closed {
-    opacity: 0;
-    transform: translateX(-10%);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Background circle About */
-.perspective-1000 {
-    perspective: 1000px;
-}
-
-.animate-blob {
-    animation: blob 7s infinite;
-    will-change: transform;
-}
-
-@keyframes fade-in {
+@keyframes page-enter {
     from {
         opacity: 0;
-        transform: translateY(-10px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
-.animate-fade-in {
-    animation: fade-in 0.3s ease-out forwards;
-}
-.step-content {
-    opacity: 0;
-    transform: translateX(20px);
-    transition: all 0.5s ease-out;
-}
-.step-content.active {
-    opacity: 1;
-    transform: translateX(0);
+
+@keyframes page-exit {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
-/* Scroll Reveal */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================
+   TYPOGRAPHY SYSTEM
+   ========================================= */
+.text-display {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+}
+
+.text-headline {
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.text-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   NAVBAR — Ultra Smooth Liquid Glass
+   ========================================= */
+#main-navbar {
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                backdrop-filter 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                margin 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                padding 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-glass {
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-bottom: 1px solid transparent;
+}
+
+.navbar-scrolled {
+    width: 88%;
+    margin-top: 16px;
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* =========================================
+   SCROLL REVEAL — Smooth Entry
+   ========================================= */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(24px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
 
-@keyframes blob {
-    0% {
-        transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-        transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-        transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-        transform: translate(0px, 0px) scale(1);
-    }
-}
-/* Liquid Glass Bounce & Floating Effect */
-.navbar-glass {
-    background: #191e2b; /* Warna solid Deep Navy */
-    backdrop-filter: blur(10px);
-    border: none;
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* =========================================
+   GLASSMORPHISM CARDS
+   ========================================= */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.navbar-scrolled {
-    @apply mt-4 mx-auto max-w-[90%] rounded-full;
-    background: rgba(25, 30, 43, 0.85); /* Tetap glass saat melayang */
-    backdrop-filter: blur(20px);
-    border: none; /* Hapus border */
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-    transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(0, 198, 230, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 198, 230, 0.08);
+}
+
+/* =========================================
+   GLOW EFFECTS
+   ========================================= */
+.glow-cyan {
+    box-shadow: 0 0 40px rgba(0, 198, 230, 0.15);
+}
+
+.glow-text-cyan {
+    text-shadow: 0 0 30px rgba(0, 198, 230, 0.4);
+}
+
+/* =========================================
+   GRADIENT LINE ACCENT
+   ========================================= */
+.gradient-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00c6e6, transparent);
+}
+
+/* =========================================
+   BUTTONS — Premium Apple-style
+   ========================================= */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: #00c6e6;
+    color: #000;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15), transparent);
+    border-radius: inherit;
+}
+
+.btn-primary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 32px rgba(0, 198, 230, 0.4), 0 16px 32px -8px rgba(0, 198, 230, 0.3);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: scale(1.03);
+}
+
+/* =========================================
+   HAMBURGER MENU ANIMATIONS
+   ========================================= */
+.mobile-menu-open {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-menu-closed {
+    opacity: 0;
+    transform: translateX(-8%);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================
+   STEP TRANSITION
+   ========================================= */
+.step-content {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.step-content.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+@keyframes blob {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(30px, -50px) scale(1.1); }
+    66%  { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-16px); }
 }
 
 @keyframes spin-slow {
     from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-@keyframes spin-slow-reverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
-}
-.animate-spin-slow {
-    animation: spin-slow 20s linear infinite;
-}
-.animate-spin-slow-reverse {
-    animation: spin-slow-reverse 25s linear infinite;
+    to   { transform: rotate(360deg); }
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-.animate-float {
-    animation: float 6s ease-in-out infinite;
+@keyframes spin-slow-reverse {
+    from { transform: rotate(360deg); }
+    to   { transform: rotate(0deg); }
 }
 
 @keyframes gradient-x {
     0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-.animate-gradient-x {
-    background-size: 200% 200%;
-    animation: gradient-x 15s ease infinite;
+    50%       { background-position: 100% 50%; }
 }
 
-.animation-delay-2000 {
-    animation-delay: 2s;
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-.animation-delay-4000 {
-    animation-delay: 4s;
+@keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
 }
 
-/* Optimasi Performa Section */
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 198, 230, 0.15); }
+    50%       { box-shadow: 0 0 40px rgba(0, 198, 230, 0.35); }
+}
+
+/* =========================================
+   ANIMATION UTILITIES
+   ========================================= */
+.animate-blob          { animation: blob 7s infinite; will-change: transform; }
+.animate-float         { animation: float 6s ease-in-out infinite; }
+.animate-float-delay   { animation: float 6s ease-in-out 3s infinite; }
+.animate-spin-slow     { animation: spin-slow 20s linear infinite; }
+.animate-spin-slow-reverse { animation: spin-slow-reverse 25s linear infinite; }
+.animate-fade-in       { animation: fade-in 0.4s ease-out forwards; }
+.animate-gradient-x    { background-size: 200% 200%; animation: gradient-x 12s ease infinite; }
+.animate-shimmer       { background-size: 200% auto; animation: shimmer 3s linear infinite; }
+.animate-pulse-glow    { animation: pulse-glow 2.5s ease-in-out infinite; }
+.animate-pulse-slow    { animation: pulse 4s ease-in-out infinite; }
+
+.animation-delay-200  { animation-delay: 0.2s; }
+.animation-delay-400  { animation-delay: 0.4s; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* =========================================
+   SHIKI CODE SYNTAX
+   ========================================= */
+.shiki .highlight {
+    @apply bg-gray-600 py-1;
+}
+.shiki .add {
+    @apply bg-green-600/50 py-1 rounded-sm;
+}
+.shiki .del {
+    @apply bg-red-300/50 py-1 rounded-sm;
+}
+.shiki.focus .line:not(.focus) {
+    @apply transition-all blur-[2px];
+}
+.shiki.focus:hover .line {
+    @apply transition-all blur-0;
+}
+
+/* =========================================
+   MARKDOWN
+   ========================================= */
+.markdown-content h1 { @apply text-2xl font-bold; }
+.markdown-content p  { @apply text-base leading-relaxed; }
+
+/* =========================================
+   PERSPECTIVE UTIL
+   ========================================= */
+.perspective-1000 { perspective: 1000px; }
+
+/* =========================================
+   PERFORMANCE — Content Visibility
+   ========================================= */
 section {
     content-visibility: auto;
     contain-intrinsic-size: 1px 500px;

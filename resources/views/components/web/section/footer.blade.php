@@ -1,4 +1,4 @@
-<footer id="footer" class="bg-gradient-to-b from-[#091b29] to-[#050d14] px-10 border-t border-white/5">
+<footer id="footer" class="bg-black border-t border-white/[0.05] px-10">
     <div
         class="flex flex-col justify-between py-8 md:py-12 mx-auto space-y-8 gap-6 lg:flex-row lg:space-y-0 px-4 md:px-6">
         <div class="lg:w-1/3 flex flex-col">

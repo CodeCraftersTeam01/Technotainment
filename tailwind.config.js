@@ -41,14 +41,14 @@ export default {
                 "blue-tertiary": "#5790ab",
                 "blue-quaternary": "#9ccddb",
                 "blue-quinary": "#d0d7e1",
-                primary: "#191e2b",
-                secondary: "#253045",
+                primary: "#000000",
+                secondary: "#0a0a0a",
                 tertiary: "#00c6e6",
                 quaternary: "#bfc0d1",
-                quinary: "#d0d7e1",
+                quinary: "#8a8fa8",
             },
             fontFamily: {
-                sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+                sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
             },
             animation: {
                 float: "float 6s ease-in-out infinite",

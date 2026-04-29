@@ -1,160 +1,147 @@
 <div id="main-navbar"
-    class="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-700 py-2 navbar-glass">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-12">
-            <div class="flex items-center">
+    class="navbar-glass fixed top-0 left-0 right-0 w-full z-50 py-4">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="flex justify-between items-center h-10">
+
+            {{-- Logo --}}
+            <div class="flex items-center gap-3 flex-shrink-0">
                 @if($event)
-                    <div class="flex items-center group">
-                        <a href="/">
-                            <img class="h-10 w-10 object-cover rounded-md object-center" src="{{ Storage::url($event->event_logo) }}" alt="{{ $event->event_name }}">
-                        </a>
-                    </div>
-                @endif
-                <nav class="hidden md:ml-8 md:flex md:space-x-6 lg:space-x-10">
-                    <a id="nav-link" href="{{ request()->path() == '/' ? '#home' : '/' }}" data-section="home"
-                        class="nav-link flex items-center px-2 py-1 text-sm font-medium text-quaternary hover:text-quinary transition-all duration-300 relative group overflow-hidden">
-                        <span>Home</span>
-                        <span
-                            class="absolute bottom-0 left-0 w-full h-0.5 bg-quaternary transform translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-                    </a>
-                    @if ($event)
-                        <a id="nav-link" href="/#about" data-section="about"
-                            class="nav-link flex items-center px-2 py-1 text-sm font-medium text-quaternary hover:text-quinary transition-all duration-300 relative group overflow-hidden">
-                            <span>About</span>
-                            <span
-                                class="absolute bottom-0 left-0 w-full h-0.5 bg-quaternary transform translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-                        </a>
-                        <a id="nav-link" href="/#competition" data-section="competition"
-                            class="nav-link flex items-center px-2 py-1 text-sm font-medium text-quaternary hover:text-quinary transition-all duration-300 relative group overflow-hidden">
-                            <span>Competition</span>
-                            <span
-                                class="absolute bottom-0 left-0 w-full h-0.5 bg-quaternary transform translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-                        </a>
-                        <a id="nav-link" href="/#announcement" data-section="announcement"
-                            class="nav-link flex items-center px-2 py-1 text-sm font-medium text-quaternary hover:text-quinary transition-all duration-300 relative group overflow-hidden">
-                            <span>Announcement</span>
-                            <span
-                                class="absolute bottom-0 left-0 w-full h-0.5 bg-quaternary transform translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-                        </a>
-                    @endif
-                    <a id="nav-link" href="/#footer" data-section="footer"
-                        class="nav-link flex items-center px-2 py-1 text-sm font-medium text-quaternary hover:text-quinary transition-all duration-300 relative group overflow-hidden">
-                        <span>Contact</span>
-                        <span
-                            class="absolute bottom-0 left-0 w-full h-0.5 bg-quaternary transform translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-                    </a>
-                </nav>
-            </div>
-            <div class="hidden md:flex items-center">
-                @if ($event)
-                    <a href="{{ route('team.login') }}" id="toLogin"
-                        class="nav-link relative inline-flex items-center px-6 py-2.5 text-sm font-bold rounded-full shadow-md overflow-hidden group">
-                        <span
-                            class="absolute inset-0 w-full h-full bg-gradient-to-r from-quaternary to-quaternary/80"></span>
-                        <span
-                            class="absolute bottom-0 left-0 h-full w-0 bg-gradient-to-r from-quinary to-quinary/80 transition-all duration-300 group-hover:w-full"></span>
-                        <span
-                            class="relative text-secondary group-hover:text-secondary transition-all duration-300">Login</span>
+                    <a href="/" class="flex items-center gap-3 group">
+                        <img class="h-7 w-7 object-cover rounded-lg" src="{{ Storage::url($event->event_logo) }}" alt="{{ $event->event_name }}" loading="lazy">
+                        <span class="hidden sm:block text-sm font-semibold text-white/90 tracking-tight group-hover:text-white transition-colors duration-300">{{ $event->event_name }}</span>
                     </a>
                 @endif
             </div>
 
-            <!-- Hamburger toggle -->
-            <x-web.section.hamburger :event="$event" />
+            {{-- Desktop Nav --}}
+            <nav class="hidden md:flex items-center gap-1">
+                @php
+                    $links = [
+                        ['href' => (request()->path() == '/' ? '#home' : '/'), 'section' => 'home', 'label' => 'Home'],
+                    ];
+                    if ($event) {
+                        $links[] = ['href' => '/#about',        'section' => 'about',        'label' => 'About'];
+                        $links[] = ['href' => '/#competition',  'section' => 'competition',  'label' => 'Competition'];
+                        $links[] = ['href' => '/#announcement', 'section' => 'announcement', 'label' => 'Announcement'];
+                    }
+                    $links[] = ['href' => '/#footer', 'section' => 'footer', 'label' => 'Contact'];
+                @endphp
+
+                @foreach($links as $link)
+                    <a href="{{ $link['href'] }}" data-section="{{ $link['section'] }}"
+                        class="nav-link px-4 py-2 text-[13px] font-medium text-white/60 hover:text-white rounded-full hover:bg-white/6 transition-all duration-300 tracking-tight">
+                        {{ $link['label'] }}
+                    </a>
+                @endforeach
+            </nav>
+
+            {{-- CTA --}}
+            <div class="hidden md:flex items-center gap-3">
+
+
+                @if ($event)
+                    <a href="{{ route('team.login') }}" id="toLogin" class="btn-primary text-[13px] !py-2 !px-5">
+                        Sign In
+                    </a>
+                @endif
+            </div>
+
+            {{-- Mobile Actions --}}
+            <div class="flex items-center gap-3 md:hidden">
+
+
+                {{-- Hamburger --}}
+                <x-web.section.hamburger :event="$event" />
+            </div>
         </div>
     </div>
 
     <script>
-        const navLink = document.querySelectorAll('#nav-link');
-        navLink.forEach(link => {
-            link.addEventListener('click', (e) => {
-                document.location.href = link.href;
-            })
-        });
-        document.querySelectorAll('.nav-link').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const sectionId = this.getAttribute('data-section');
-                const element = document.getElementById(sectionId);
+        // Smooth Liquid Glass Navbar on scroll
+        (function() {
+            const navbar = document.getElementById('main-navbar');
 
-                if (this.classList.contains('mobile-link')) {
-                    document.getElementById('mobile-menu').classList.remove('mobile-menu-open');
-                    document.getElementById('mobile-menu').classList.add('mobile-menu-closed');
-                    setTimeout(() => {
-                        document.getElementById('mobile-menu').classList.add('hidden');
-                    }, 300);
-                    resetHamburgerIcon();
+            function handleScroll() {
+                if (window.scrollY > 60) {
+                    navbar.classList.add('navbar-scrolled');
+                    navbar.classList.remove('py-4');
+                    navbar.classList.add('py-2');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                    navbar.classList.remove('py-2');
+                    navbar.classList.add('py-4');
                 }
+            }
 
-                if (element) {
-                    element.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+            window.addEventListener('scroll', handleScroll, { passive: true });
+
+            document.querySelectorAll('.nav-link').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    const href = this.getAttribute('href');
+
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.remove('mobile-menu-open');
+                        mobileMenu.classList.add('mobile-menu-closed');
+                        setTimeout(() => mobileMenu.classList.add('hidden'), 400);
+                        resetHamburger();
+                    }
+
+                    const element = document.getElementById(sectionId);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    } else if (href) {
+                        document.location.href = href;
+                    }
+                });
+            });
+
+            // Hamburger controls
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerLines = document.querySelectorAll('.hamburger-line');
+
+            function resetHamburger() {
+                hamburgerLines.forEach(l => l.classList.remove('rotate-45', 'translate-y-2', 'opacity-0', 'translate-x-3', '-rotate-45', '-translate-y-2'));
+            }
+
+            if (hamburgerButton) {
+                hamburgerButton.addEventListener('click', () => {
+                    if (mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.remove('hidden');
+                        setTimeout(() => {
+                            mobileMenu.classList.remove('mobile-menu-closed');
+                            mobileMenu.classList.add('mobile-menu-open');
+                        }, 10);
+                        hamburgerLines[0].classList.add('rotate-45', 'translate-y-2');
+                        hamburgerLines[1].classList.add('opacity-0', 'translate-x-3');
+                        hamburgerLines[2].classList.add('-rotate-45', '-translate-y-2');
+                    } else {
+                        mobileMenu.classList.remove('mobile-menu-open');
+                        mobileMenu.classList.add('mobile-menu-closed');
+                        setTimeout(() => mobileMenu.classList.add('hidden'), 400);
+                        resetHamburger();
+                    }
+                });
+            }
+
+            const toLogin = document.getElementById('toLogin');
+            if (toLogin) {
+                toLogin.addEventListener('click', () => {
+                    document.location.href = "{{ route('team.login') }}";
+                });
+            }
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768 && mobileMenu) {
+                    mobileMenu.classList.add('hidden', 'mobile-menu-closed');
+                    mobileMenu.classList.remove('mobile-menu-open');
+                    resetHamburger();
                 }
             });
-        });
-
-        const hamburgerButton = document.getElementById('hamburger-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const hamburgerLines = document.querySelectorAll('.hamburger-line');
-
-        const toLogin = document.getElementById('toLogin');
-        if(toLogin) {
-            toLogin.addEventListener('click', () => {
-                document.location.href = "{{ route('team.login') }}";
-            })
-        }
-
-        const toLoginHamburger = document.getElementById('toLoginHamburger');
-        if(toLoginHamburger) {
-            toLoginHamburger.addEventListener('click', () => {
-                document.location.href = "{{ route('team.login') }}";
-            })
-        }
-
-        hamburgerButton.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-                setTimeout(() => {
-                    mobileMenu.classList.remove('mobile-menu-closed');
-                    mobileMenu.classList.add('mobile-menu-open');
-                }, 10);
-                hamburgerLines[0].classList.add('rotate-45', 'translate-y-2');
-                hamburgerLines[1].classList.add('opacity-0', 'translate-x-3');
-                hamburgerLines[2].classList.add('-rotate-45', '-translate-y-2');
-            } else {
-                mobileMenu.classList.remove('mobile-menu-open');
-                mobileMenu.classList.add('mobile-menu-closed');
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                }, 300);
-                resetHamburgerIcon();
-            }
-        });
-
-        function resetHamburgerIcon() {
-            hamburgerLines[0].classList.remove('rotate-45', 'translate-y-2');
-            hamburgerLines[1].classList.remove('opacity-0', 'translate-x-3');
-            hamburgerLines[2].classList.remove('-rotate-45', '-translate-y-2');
-        }
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) {
-                mobileMenu.classList.add('hidden', 'mobile-menu-closed');
-                mobileMenu.classList.remove('mobile-menu-open');
-                resetHamburgerIcon();
-            }
-        });
-
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('main-navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('navbar-scrolled', 'py-1');
-                navbar.classList.remove('py-2', 'navbar-glass');
-            } else {
-                navbar.classList.remove('navbar-scrolled', 'py-1');
-                navbar.classList.add('py-2', 'navbar-glass');
-            }
-        });
+        })();
     </script>
 </div>
