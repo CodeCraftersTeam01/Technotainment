@@ -10,7 +10,7 @@
 
     {{-- Mobile menu --}}
     <div id="mobile-menu"
-        class="hidden md:hidden mobile-menu-closed fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-3xl h-screen z-40 border-r border-white/5">
+        class="hidden md:hidden mobile-menu-closed fixed top-0 left-0 right-0 bg-[#071225]/97 backdrop-blur-3xl h-screen z-40 border-r border-[#5fa8d3]/5">
         <div class="container mx-auto px-6 py-20 flex flex-col h-full relative">
 
             {{-- Ambient glow --}}

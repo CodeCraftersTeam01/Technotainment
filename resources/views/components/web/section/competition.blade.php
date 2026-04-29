@@ -1,4 +1,4 @@
-<div id="competition" class="relative py-24 bg-black">
+<div id="competition" class="relative py-24 bg-[#071225]">
     <x-web.section.background />
 
     {{-- Top line --}}
@@ -35,15 +35,15 @@
         </div>
 
         {{-- E-Sport Cards --}}
-        <div id="esportContent" class="{{ request()->get('tab') == 'nonesport' ? 'hidden' : '' }}">
+        <div id="esportContent" class="{{ request()->get('tab') == 'nonesport' ? 'hidden' : '' }} grid grid-cols-1 md:grid-cols-2 gap-6">
             @forelse($esports as $esport)
-                <a href="/competition/{{ $esport->slug }}" class="block mb-6 group reveal">
+                <a href="/competition/{{ $esport->slug }}" class="block group reveal">
                     <div class="relative overflow-hidden rounded-2xl border transition-all duration-500 group-hover:-translate-y-1"
                          style="background:rgba(255,255,255,0.025); border-color:rgba(255,255,255,0.07);"
                          onmouseover="this.style.borderColor='rgba(0,198,230,0.2)'; this.style.background='rgba(0,198,230,0.02)'; this.style.boxShadow='0 24px 48px -12px rgba(0,0,0,0.8)'"
                          onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'; this.style.background='rgba(255,255,255,0.025)'; this.style.boxShadow='none'">
 
-                        <div class="flex flex-col md:flex-row items-center gap-8 p-8 md:p-10">
+                        <div class="flex flex-col xl:flex-row items-center gap-6 p-6 md:p-8">
 
                             {{-- Logo --}}
                             <div class="flex-shrink-0">
@@ -57,7 +57,7 @@
                             </div>
 
                             {{-- Info --}}
-                            <div class="flex-1 text-center md:text-left">
+                            <div class="flex-1 text-center xl:text-left">
                                 <p style="font-size:0.62rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(0,198,230,0.6); margin-bottom:0.5rem;">
                                     E-Sport
                                 </p>
@@ -70,7 +70,7 @@
                             </div>
 
                             {{-- Meta --}}
-                            <div class="flex flex-col gap-4 flex-shrink-0 text-center md:text-right">
+                            <div class="flex flex-row xl:flex-col gap-4 flex-shrink-0 text-center xl:text-right w-full xl:w-auto justify-between xl:justify-start border-t xl:border-t-0 border-white/5 pt-4 xl:pt-0">
                                 <div>
                                     <p style="font-size:0.6rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:0.25rem;">Prize Pool</p>
                                     <p style="font-size:1.1rem; font-weight:800; color:#00c6e6; letter-spacing:-0.02em;">
@@ -83,7 +83,7 @@
                                         Rp {{ number_format($esport->competition_fee, 0, ',', '.') }}
                                     </p>
                                 </div>
-                                <div class="flex items-center gap-2 justify-center md:justify-end"
+                                <div class="flex items-center gap-2 justify-center xl:justify-end"
                                      style="color:rgba(0,198,230,0.7); font-size:0.8rem; font-weight:600; letter-spacing:0.02em;">
                                     View Details
                                     <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform duration-300">
@@ -103,15 +103,15 @@
         </div>
 
         {{-- Non E-Sport Cards --}}
-        <div id="nonesportContent" class="hidden">
+        <div id="nonesportContent" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
             @forelse($nonesports as $nonesport)
-                <a href="/competition/{{ $nonesport->slug }}" class="block mb-6 group reveal">
+                <a href="/competition/{{ $nonesport->slug }}" class="block group reveal">
                     <div class="relative overflow-hidden rounded-2xl border transition-all duration-500 group-hover:-translate-y-1"
                          style="background:rgba(255,255,255,0.025); border-color:rgba(255,255,255,0.07);"
                          onmouseover="this.style.borderColor='rgba(0,198,230,0.2)'; this.style.background='rgba(0,198,230,0.02)'; this.style.boxShadow='0 24px 48px -12px rgba(0,0,0,0.8)'"
                          onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'; this.style.background='rgba(255,255,255,0.025)'; this.style.boxShadow='none'">
 
-                        <div class="flex flex-col md:flex-row items-center gap-8 p-8 md:p-10">
+                        <div class="flex flex-col xl:flex-row items-center gap-6 p-6 md:p-8">
                             <div class="flex-shrink-0">
                                 <div class="w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden"
                                      style="border:1px solid rgba(255,255,255,0.08);">
@@ -121,7 +121,7 @@
                                          loading="lazy">
                                 </div>
                             </div>
-                            <div class="flex-1 text-center md:text-left">
+                            <div class="flex-1 text-center xl:text-left">
                                 <p style="font-size:0.62rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(191,192,209,0.6); margin-bottom:0.5rem;">
                                     Non E-Sport
                                 </p>
@@ -132,7 +132,7 @@
                                     {{ Str::limit($nonesport->competition_description, 120) }}
                                 </p>
                             </div>
-                            <div class="flex flex-col gap-4 flex-shrink-0 text-center md:text-right">
+                            <div class="flex flex-row xl:flex-col gap-4 flex-shrink-0 text-center xl:text-right w-full xl:w-auto justify-between xl:justify-start border-t xl:border-t-0 border-white/5 pt-4 xl:pt-0">
                                 <div>
                                     <p style="font-size:0.6rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:0.25rem;">Prize Pool</p>
                                     <p style="font-size:1.1rem; font-weight:800; color:#00c6e6; letter-spacing:-0.02em;">
@@ -145,7 +145,7 @@
                                         Rp {{ number_format($nonesport->competition_fee, 0, ',', '.') }}
                                     </p>
                                 </div>
-                                <div class="flex items-center gap-2 justify-center md:justify-end"
+                                <div class="flex items-center gap-2 justify-center xl:justify-end"
                                      style="color:rgba(0,198,230,0.7); font-size:0.8rem; font-weight:600; letter-spacing:0.02em;">
                                     View Details
                                     <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform duration-300">

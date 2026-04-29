@@ -1,10 +1,11 @@
 @props(['mediaPartners', 'event', 'sponsors'])
 
-<div id="home" class="relative min-h-screen bg-black overflow-hidden">
+<div id="home" class="relative min-h-screen bg-[#071225] overflow-hidden">
 
     {{-- Ambient light orbs --}}
-    <div class="absolute top-[-5%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-[#00c6e6]/12 rounded-full blur-[100px] pointer-events-none" style="will-change: filter;"></div>
-    <div class="absolute top-1/3 left-1/5 w-[500px] h-[500px] bg-[#00c6e6]/6 rounded-full blur-[80px] pointer-events-none animate-blob" style="will-change: filter, transform;"></div>
+    <div class="absolute top-[-5%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-[#1a4fd8]/18 rounded-full blur-[120px] pointer-events-none" style="will-change: filter;"></div>
+    <div class="absolute top-1/3 left-1/5 w-[500px] h-[500px] bg-[#00c6e6]/8 rounded-full blur-[80px] pointer-events-none animate-blob" style="will-change: filter, transform;"></div>
+    <div class="absolute bottom-0 right-0 w-[600px] h-[500px] bg-[#0d2146]/80 rounded-full blur-[100px] pointer-events-none"></div>
 
     {{-- Square Grid --}}
     <div class="absolute inset-0 pointer-events-none z-0"
@@ -22,8 +23,8 @@
         </span>
     </div>
 
-    {{-- Top fade --}}
-    <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent pointer-events-none z-10"></div>
+    {{-- Top fade transition (Black gradient shadow) --}}
+    <div class="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10"></div>
 
     {{-- Hero Content --}}
     <div class="relative z-20 container mx-auto px-6 lg:px-8 flex flex-col items-center justify-center min-h-screen text-center pt-28 pb-20">

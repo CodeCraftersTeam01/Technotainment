@@ -1,4 +1,4 @@
-@props(['theme' => 'bg-black guest-theme'])
+@props(['theme' => 'bg-[#071225] guest-theme'])
 <!DOCTYPE html>
 <html lang="en">
 <head>

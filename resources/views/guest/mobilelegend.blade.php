@@ -3,12 +3,12 @@
     <x-web.loader />
 
     {{-- Background Elements --}}
-    <div class="fixed inset-0 bg-black -z-10"></div>
-    <div class="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 pointer-events-none -z-10"></div>
+    <div class="fixed inset-0 bg-[#071225] -z-10"></div>
+    <div class="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.08] brightness-100 contrast-150 pointer-events-none -z-10"></div>
     
     {{-- Ambient Light Orbs --}}
-    <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#00c6e6]/10 blur-[100px] animate-pulse -z-10"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-[#00c6e6]/5 blur-[100px] animate-pulse -z-10" style="animation-delay: 2s;"></div>
+    <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#1a4fd8]/20 blur-[120px] animate-pulse -z-10"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-[#0d2146]/80 blur-[100px] animate-pulse -z-10" style="animation-delay: 2s;"></div>
 
     {{-- Square Grid Background --}}
     <div class="fixed inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.05)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] -z-10"></div>

@@ -1,5 +1,5 @@
 @props(['mediaPartners', 'event', 'sponsors'])
-<div class="relative bg-black overflow-hidden py-16">
+<div class="relative bg-[#071225] overflow-hidden py-16">
     <x-web.section.background />
     <div class="w-full max-w-5xl my-16 mx-auto relative">
         @if($event)

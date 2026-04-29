@@ -1,5 +1,5 @@
 @props(['announcement'])
-<div id="announcement" class="relative pb-24 pt-16 bg-black">
+<div id="announcement" class="relative pb-24 pt-16 bg-[#071225]">
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 relative pt-4 reveal">
             <p class="text-label text-[#00c6e6]/60 mb-3">Stay Updated</p>

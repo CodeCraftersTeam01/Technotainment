@@ -1,6 +1,6 @@
 @props(['event'])
 
-<div id="about" class="relative py-32 bg-black overflow-hidden">
+<div id="about" class="relative py-32 bg-[#071225] overflow-hidden">
 
     {{-- Subtle background --}}
     <div class="absolute inset-0 pointer-events-none"
@@ -53,7 +53,7 @@
 
             {{-- Pillar 1 --}}
             <div class="group p-8 relative"
-                 style="background: rgba(255,255,255,0.02); transition: background 0.4s ease;">
+                 style="background: rgba(13,33,70,0.55); transition: background 0.4s ease;">
                 <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-none pointer-events-none"
                      style="background: linear-gradient(135deg, rgba(0,198,230,0.05), transparent);"></div>
                 <p style="font-size:2.5rem; font-weight:900; color:#00c6e6; letter-spacing:-0.04em; margin-bottom:0.5rem; line-height:1;">
@@ -67,7 +67,7 @@
 
             {{-- Pillar 2 --}}
             <div class="group p-8 relative"
-                 style="background: rgba(255,255,255,0.02); border-left: 1px solid rgba(255,255,255,0.07); border-right: 1px solid rgba(255,255,255,0.07); transition: background 0.4s ease;">
+                 style="background: rgba(13,33,70,0.55); border-left: 1px solid rgba(95,168,211,0.08); border-right: 1px solid rgba(95,168,211,0.08); transition: background 0.4s ease;">
                 <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                      style="background: linear-gradient(135deg, rgba(0,198,230,0.05), transparent);"></div>
                 <p style="font-size:2.5rem; font-weight:900; color:#bfc0d1; letter-spacing:-0.04em; margin-bottom:0.5rem; line-height:1;">
@@ -81,7 +81,7 @@
 
             {{-- Pillar 3 --}}
             <div class="group p-8 relative"
-                 style="background: rgba(255,255,255,0.02); transition: background 0.4s ease;">
+                 style="background: rgba(13,33,70,0.55); transition: background 0.4s ease;">
                 <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                      style="background: linear-gradient(135deg, rgba(0,198,230,0.05), transparent);"></div>
                 <p style="font-size:2.5rem; font-weight:900; letter-spacing:-0.04em; margin-bottom:0.5rem; line-height:1; background: linear-gradient(100deg,#00c6e6,#bfc0d1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; padding-bottom:0.08em; display:inline-block;">

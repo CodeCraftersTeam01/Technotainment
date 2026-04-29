@@ -1,7 +1,7 @@
 <x-layout>
     <x-web.section.navbar :event="$competition->event" />
 
-    <div class="relative bg-black min-h-screen overflow-hidden">
+    <div class="relative bg-[#071225] min-h-screen overflow-hidden">
 
         {{-- Ambient background --}}
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00c6e6]/8 rounded-full blur-[100px] pointer-events-none" style="will-change: filter;"></div>
