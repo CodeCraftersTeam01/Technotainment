@@ -10,7 +10,7 @@
 
     {{-- Mobile menu --}}
     <div id="mobile-menu"
-        class="hidden md:hidden mobile-menu-closed fixed top-0 left-0 right-0 bg-[#071225]/97 backdrop-blur-3xl h-screen z-40 border-r border-[#5fa8d3]/5">
+        class="hidden md:hidden mobile-menu-closed fixed top-0 left-0 right-0 bg-[#071225]/60 backdrop-blur-3xl h-screen z-40 border-r border-[#5fa8d3]/5">
         <div class="container mx-auto px-6 py-20 flex flex-col h-full relative">
 
             {{-- Ambient glow --}}
@@ -77,9 +77,15 @@
             const mobileMenu  = document.getElementById('mobile-menu');
             const hamburgerLines = document.querySelectorAll('.hamburger-line');
 
+            // Detach mobile menu from navbar to prevent backdrop-filter containing block clipping
+            if (mobileMenu && mobileMenu.parentElement !== document.body) {
+                document.body.appendChild(mobileMenu);
+            }
+
             function closeMobileMenu() {
                 mobileMenu.classList.remove('mobile-menu-open');
                 mobileMenu.classList.add('mobile-menu-closed');
+                document.body.classList.remove('mobile-menu-active');
                 setTimeout(() => mobileMenu.classList.add('hidden'), 400);
                 hamburgerLines.forEach(l => l.classList.remove('rotate-45', 'translate-y-2', 'opacity-0', 'translate-x-3', '-rotate-45', '-translate-y-2'));
             }

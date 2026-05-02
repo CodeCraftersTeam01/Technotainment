@@ -86,6 +86,7 @@
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.remove('mobile-menu-open');
                         mobileMenu.classList.add('mobile-menu-closed');
+                        document.body.classList.remove('mobile-menu-active');
                         setTimeout(() => mobileMenu.classList.add('hidden'), 400);
                         resetHamburger();
                     }
@@ -115,6 +116,7 @@
                         setTimeout(() => {
                             mobileMenu.classList.remove('mobile-menu-closed');
                             mobileMenu.classList.add('mobile-menu-open');
+                            document.body.classList.add('mobile-menu-active');
                         }, 10);
                         hamburgerLines[0].classList.add('rotate-45', 'translate-y-2');
                         hamburgerLines[1].classList.add('opacity-0', 'translate-x-3');
@@ -122,6 +124,7 @@
                     } else {
                         mobileMenu.classList.remove('mobile-menu-open');
                         mobileMenu.classList.add('mobile-menu-closed');
+                        document.body.classList.remove('mobile-menu-active');
                         setTimeout(() => mobileMenu.classList.add('hidden'), 400);
                         resetHamburger();
                     }
@@ -139,6 +142,7 @@
                 if (window.innerWidth >= 768 && mobileMenu) {
                     mobileMenu.classList.add('hidden', 'mobile-menu-closed');
                     mobileMenu.classList.remove('mobile-menu-open');
+                    document.body.classList.remove('mobile-menu-active');
                     resetHamburger();
                 }
             });

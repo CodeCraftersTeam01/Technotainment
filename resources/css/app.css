@@ -146,6 +146,17 @@ body.page-exit {
     box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.8), 0 0 32px -10px rgba(0, 198, 230, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+body.mobile-menu-active #main-navbar.navbar-scrolled {
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
 /* =========================================
    SCROLL REVEAL — Smooth Entry
    ========================================= */
