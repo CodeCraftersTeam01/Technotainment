@@ -26,13 +26,17 @@ class AppServiceProvider extends ServiceProvider
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
 
-        if (Schema::hasTable('events')) {
-            $event = Event::where('event_status', 'active')->first();
-            View::share('eventTitle', $event ? $event->event_name . ' - ' . $event->event_year : 'Coming Soon');
-            View::share('eventLogo', $event ? ($event->event_logo ?? '') : '');
-        } else {
-            View::share('eventTitle', 'Coming Soon');
-            View::share('eventLogo', '');
+        if (!app()->runningInConsole()) {
+            try {
+                $event = \Illuminate\Support\Facades\Cache::remember('active_event_header', 3600, function () {
+                    return Event::where('event_status', 'active')->first();
+                });
+                View::share('eventTitle', $event ? $event->event_name . ' - ' . $event->event_year : 'Coming Soon');
+                View::share('eventLogo', $event ? ($event->event_logo ?? '') : '');
+            } catch (\Exception $e) {
+                View::share('eventTitle', 'Coming Soon');
+                View::share('eventLogo', '');
+            }
         }
     }
 }

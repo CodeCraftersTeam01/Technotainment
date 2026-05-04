@@ -34,7 +34,7 @@ class GuestController extends Controller
      */
     public function index()
     {
-        $event = Event::where('event_status', 'active')->first();
+        $event = Event::with('competitions')->where('event_status', 'active')->first();
         if ($event) {
             $mediaPartners = MediaPartner::where('event_id', $event->event_id)->get();
             $sponsors = Sponsor::where('event_id', $event->event_id)->get();
@@ -86,7 +86,7 @@ class GuestController extends Controller
         $slug = $competition->slug;
 
         // get event where slug right on url
-        $event = Event::where('event_status', 'active')
+        $event = Event::with('competitions')->where('event_status', 'active')
             ->whereHas('competitions', function ($query) use ($slug) {
                 $query->where('slug', $slug);
             })->first();
@@ -112,7 +112,7 @@ class GuestController extends Controller
      */
     public function registration(Competition $competition)
     {
-        $event = Event::where('event_status', 'active')->first();
+        $event = Event::with('competitions')->where('event_status', 'active')->first();
 
         if ($competition->competition_status == 'nonactive') {
             abort('404');
@@ -428,7 +428,7 @@ class GuestController extends Controller
 
     public function login()
     {
-        $event = Event::where('event_status', 'active')->first();
+        $event = Event::with('competitions')->where('event_status', 'active')->first();
         // lewat session
         if(session('Kf92xLmT1aZqW7bY4eU3')) {
             $team = Team::with(['members', 'competition', 'works'])->where('team_token', session('Kf92xLmT1aZqW7bY4eU3'))->first();

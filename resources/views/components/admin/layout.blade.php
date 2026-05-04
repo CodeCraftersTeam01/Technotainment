@@ -3,6 +3,7 @@
 ])
 
 <x-layout theme="bg-white admin-theme">
+    @vite(['resources/js/admin.js'])
     @include('sweetalert::alert')
     <section class="flex bg-white min-h-screen">
         <x-admin.sidebar />

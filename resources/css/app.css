@@ -57,7 +57,7 @@ body {
 }
 
 body.page-exit {
-    animation: page-exit 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: page-exit 0.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes page-enter {

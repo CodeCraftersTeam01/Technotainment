@@ -23,7 +23,7 @@
                 name="event_description" />
 
             <!-- Event Year -->
-            <x-form.input label="Event Year" id="event_year" name="event_year" type="text" required />
+            <x-form.input label="Event Year" id="event_year" name="event_year" type="text" value="{{ date('Y') }}" required />
 
             <!-- Event Status -->
             <x-form.select label="Event Status" id="event_status" name="event_status">

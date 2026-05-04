@@ -1,5 +1,4 @@
 import "./bootstrap";
-import "./editor";
 
 // Scroll Reveal Animation
 document.addEventListener("DOMContentLoaded", () => {

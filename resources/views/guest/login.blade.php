@@ -21,7 +21,7 @@
             </div>
             @endif
             <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4);">
-                Technotainment {{ date('Y') }}
+                Technotainment {{ isset($event) && $event ? $event->event_year : date('Y') }}
             </span>
         </div>
 
@@ -58,7 +58,7 @@
         {{-- Mobile logo --}}
         <div class="flex lg:hidden items-center gap-3 absolute top-8 left-8">
             <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4);">
-                Technotainment {{ date('Y') }}
+                Technotainment {{ isset($event) && $event ? $event->event_year : date('Y') }}
             </span>
         </div>
 

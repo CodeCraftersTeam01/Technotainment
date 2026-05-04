@@ -19,7 +19,7 @@
                   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.4);
                   letter-spacing: 0.05em;
               ">
-            {{ $event ? strtoupper($event->event_name) . ' ' . date('Y') : 'TECHNOTAINMENT ' . date('Y') }}
+            {{ $event ? strtoupper($event->event_name) . ' ' . ($event->event_year ?? date('Y')) : 'TECHNOTAINMENT ' . date('Y') }}
         </span>
     </div>
 
@@ -37,7 +37,7 @@
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-[#00c6e6]"></span>
             </span>
             <span style="font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #00c6e6; white-space: nowrap;">
-                Official Event {{ date('Y') }}
+                Official Event {{ $event ? $event->event_year : date('Y') }}
             </span>
         </div>
 
@@ -52,13 +52,16 @@
 
             {{-- Event Name --}}
             <div style="
-                font-size: clamp(3rem, 9vw, 7.5rem);
+                font-size: clamp(2rem, 8vw, 7.5rem);
                 font-weight: 900;
                 letter-spacing: -0.04em;
                 line-height: 1.0;
                 color: #ffffff;
                 text-shadow: 0 0 60px rgba(0, 198, 230, 0.18);
                 margin-bottom: 0;
+                word-break: break-word;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
             ">{{ $event ? $event->event_name : 'Technotainment' }}</div>
 
             {{-- Year — key fix: extra vertical padding to prevent clip --}}
@@ -70,7 +73,7 @@
             ">
                 <span style="
                     display: inline-block;
-                    font-size: clamp(3rem, 9vw, 7.5rem);
+                    font-size: clamp(2rem, 8vw, 7.5rem);
                     font-weight: 900;
                     letter-spacing: -0.04em;
                     line-height: 1.1;
@@ -86,7 +89,7 @@
                     animation: shimmer-year 4s linear infinite;
                     transform: translateZ(0);
                     will-change: transform;
-                ">{{ date('Y') }}</span>
+                ">{{ $event ? $event->event_year : date('Y') }}</span>
             </div>
         </div>
 
@@ -119,7 +122,7 @@
             <div class="grid grid-cols-3 gap-8">
                 <div class="text-center">
                     <p style="color:#00c6e6;font-size:1.3rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;">
-                        {{ date('Y') }}
+                        {{ $event ? $event->event_year : date('Y') }}
                     </p>
                     <p style="color:rgba(255,255,255,0.25);font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;">Event Year</p>
                 </div>
